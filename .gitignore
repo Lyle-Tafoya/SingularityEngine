@@ -1,4 +1,6 @@
 docs/html/
 lib/
+Debug/
+Release/
 *.swp
 *.swo
