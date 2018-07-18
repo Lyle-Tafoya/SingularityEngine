@@ -15,7 +15,7 @@ namespace Singularity
 
     static void Destroy(Behavior *behavior);
 
-    bool enabled = false;
+    bool enabled;
 
     virtual void LateUpdate() {};
     virtual void OnEnable() {};

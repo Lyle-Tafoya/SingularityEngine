@@ -35,7 +35,7 @@ namespace Singularity
     behaviors.erase(GetInstanceId());
   }
 
-  Behavior::Behavior()
+  Behavior::Behavior() : enabled(false)
   {
     pendingBehaviors.push_back(this);
   }
