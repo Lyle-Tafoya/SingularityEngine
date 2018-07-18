@@ -6,8 +6,6 @@
 #include <Singularity/Behavior.hpp>
 #include <Singularity/Geometry/Vector3.hpp>
 
-using Singularity::Geometry::Vector3;
-
 namespace Singularity
 {
   class Curses3Renderer : public Behavior
@@ -27,7 +25,7 @@ namespace Singularity
     Curses3Renderer() { OnEnable(); }
     ~Curses3Renderer() { OnDisable(); }
 
-    std::vector<Vector3> vertices;
+    std::vector<Geometry::Vector3> vertices;
 
     static std::unordered_map<size_t, Curses3Renderer *> const& GetDrawables() { return drawables; }
   };

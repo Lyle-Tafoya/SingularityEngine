@@ -1,6 +1,9 @@
+#include <cmath>
 #include <limits>
-#include <Singularity/Engine.hpp>
+#include <ncurses.h>
 #include <Singularity/Components/Curses3Renderer.hpp>
+#include <Singularity/Engine.hpp>
+#include <Singularity/Geometry/Vector3.hpp>
 #include <Singularity/Graphics/Curses3.hpp>
 
 namespace Singularity::Graphics
@@ -38,27 +41,30 @@ namespace Singularity::Graphics
     init_pair(COLORS, COLOR_WHITE, COLOR_BLACK);
   }
 
-  bool Curses3::RayTriangleIntersect(Vector3 const &origin, Vector3 const &direction, Vector3 const &v1, Vector3 const &v2, Vector3 const &v3, float &distance, float &u, float &v)
+  bool Curses3::RayTriangleIntersect(
+      Geometry::Vector3 const &origin, Geometry::Vector3 const &direction,
+      Geometry::Vector3 const &v1, Geometry::Vector3 const &v2, Geometry::Vector3 const &v3,
+      float &distance, float &u, float &v)
   {
-    Vector3 v1v2 = v2 - v1;
-    Vector3 v1v3 = v3 - v1;
-    Vector3 pvec = Vector3::Cross(direction, v1v3);
-    float det = Vector3::Dot(v1v2, pvec);
+    Geometry::Vector3 v1v2 = v2 - v1;
+    Geometry::Vector3 v1v3 = v3 - v1;
+    Geometry::Vector3 pvec = Geometry::Vector3::Cross(direction, v1v3);
+    float det = Geometry::Vector3::Dot(v1v2, pvec);
 
     //if(det < std::numeric_limits<float>::epsilon()) { return false; }
 
     if(fabs(det) < std::numeric_limits<float>::epsilon()) { return false; }
     float invDet = 1 / det;
 
-    Vector3 tvec = origin - v1;
-    u = Vector3::Dot(tvec, pvec) * invDet;
+    Geometry::Vector3 tvec = origin - v1;
+    u = Geometry::Vector3::Dot(tvec, pvec) * invDet;
     if (u < 0 || u > 1) return false;
 
-    Vector3 qvec = Vector3::Cross(tvec, v1v2);
-    v = Vector3::Dot(direction, qvec) * invDet;
+    Geometry::Vector3 qvec = Geometry::Vector3::Cross(tvec, v1v2);
+    v = Geometry::Vector3::Dot(direction, qvec) * invDet;
     if (v < 0 || u + v > 1) return false;
 
-    distance = Vector3::Dot(v1v3, qvec) * invDet;
+    distance = Geometry::Vector3::Dot(v1v3, qvec) * invDet;
 
     return true;
   }
@@ -70,13 +76,13 @@ namespace Singularity::Graphics
     auto drawables = Curses3Renderer::GetDrawables();
     float pixelWidth = viewport.scale.x / width;
     float pixelHeight = viewport.scale.y / height;
-    Vector3 firstPixelCenter(viewport.position.x-viewport.scale.x/2+pixelWidth/2, viewport.position.y-viewport.scale.y/2+pixelHeight/2, viewport.position.z);
-    Vector3 currentPixel = firstPixelCenter;
+    Geometry::Vector3 firstPixelCenter(viewport.position.x-viewport.scale.x/2+pixelWidth/2, viewport.position.y-viewport.scale.y/2+pixelHeight/2, viewport.position.z);
+    Geometry::Vector3 currentPixel = firstPixelCenter;
     for(int xPixel = 0; xPixel < width; ++xPixel)
     {
       for(int yPixel = 0; yPixel < height; ++yPixel)
       {
-        Vector3 ray = (camera.position - currentPixel).Normalized();
+        Geometry::Vector3 ray = (camera.position - currentPixel).Normalized();
         for(auto kv : drawables)
         {
           Curses3Renderer *drawable = kv.second;
@@ -84,10 +90,10 @@ namespace Singularity::Graphics
           for(size_t i = 0; i < drawable->vertices.size(); i += 3)
           {
             Geometry::Quaternion const &rotation = drawable->entity->transform->rotation;
-            Vector3 const &position = drawable->entity->transform->position;
-            Vector3 const &v1 = rotation * drawable->vertices[i] + position;
-            Vector3 const &v2 = rotation * drawable->vertices[i+1] + position;
-            Vector3 const &v3 = rotation * drawable->vertices[i+2] + position;
+            Geometry::Vector3 const &position = drawable->entity->transform->position;
+            Geometry::Vector3 const &v1 = rotation * drawable->vertices[i] + position;
+            Geometry::Vector3 const &v2 = rotation * drawable->vertices[i+1] + position;
+            Geometry::Vector3 const &v3 = rotation * drawable->vertices[i+2] + position;
             float distance, u, v;
             if(RayTriangleIntersect(camera.position, ray, v1, v2, v3, distance, u, v))
             {

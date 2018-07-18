@@ -1,7 +1,7 @@
+#include <string>
+#include <ncurses.h>
 #include <Singularity/Graphics/Curses.hpp>
 #include <Singularity/Components/CursesRenderer.hpp>
-
-using Singularity::Geometry::Vector3;
 
 namespace Singularity::Graphics
 {
@@ -35,7 +35,7 @@ namespace Singularity::Graphics
     {
       CursesRenderer *drawable = kv.second;
       if(!drawable->IsEnabled()) { continue; }
-      Vector3 position = drawable->entity->transform->position;
+      Geometry::Vector3 position = drawable->entity->transform->position;
       attron(COLOR_PAIR(drawable->color));
       mvwaddstr(window, position.y, position.x, drawable->text.c_str());
       attroff(COLOR_PAIR(drawable->color));
@@ -47,7 +47,7 @@ namespace Singularity::Graphics
     {
       CursesRenderer *drawable = kv.second;
       if(!drawable->IsEnabled()) { continue; }
-      Vector3 position = drawable->entity->transform->position;
+      Geometry::Vector3 position = drawable->entity->transform->position;
       std::string emptyStr(drawable->text.size(), ' ');
       mvwaddstr(window, position.y, position.x, emptyStr.c_str());
     }

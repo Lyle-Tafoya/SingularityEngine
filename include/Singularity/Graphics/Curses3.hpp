@@ -39,7 +39,10 @@ namespace Singularity::Graphics
     /// Calculate average framerate
     int Framerate();
 
-    static bool RayTriangleIntersect(Vector3 const &origin, Vector3 const &direction, Vector3 const &v1, Vector3 const &v2, Vector3 const &v3, float &distance, float &u, float &v);
+    static bool RayTriangleIntersect(
+        Geometry::Vector3 const &origin, Geometry::Vector3 const &direction,
+        Geometry::Vector3 const &v1, Geometry::Vector3 const &v2, Geometry::Vector3 const &v3,
+        float &distance, float &u, float &v);
   };
 }
 
