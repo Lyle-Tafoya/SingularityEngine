@@ -2,7 +2,7 @@
 
 namespace Singularity
 {
-  Entity::Entity(std::string const& name) : transform(new Transform)
+  Entity::Entity(std::string const& name) : transform(new Geometry::Transform)
   {
     this->name = name;
   }

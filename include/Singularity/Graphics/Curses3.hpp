@@ -4,7 +4,6 @@
 #include <ncurses.h>
 #include <Singularity/Geometry/Transform.hpp>
 #include <Singularity/Geometry/Vector3.hpp>
-using namespace Singularity::Geometry;
 
 namespace Singularity::Graphics
 {
@@ -14,8 +13,8 @@ namespace Singularity::Graphics
     WINDOW *window;
     int width;
     int height;
-    Transform camera;
-    Transform viewport;
+    Geometry::Transform camera;
+    Geometry::Transform viewport;
     float viewDistance;
 
     void InitializeColors();

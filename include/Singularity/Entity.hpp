@@ -1,13 +1,12 @@
 #ifndef _SINGULARITY_ENTITY_HPP
 #define _SINGULARITY_ENTITY_HPP
 
+#include <string>
 #include <vector>
 #include <unordered_map>
 #include <Singularity/Component.hpp>
 #include <Singularity/Object.hpp>
 #include <Singularity/Geometry/Transform.hpp>
-
-using Singularity::Geometry::Transform;
 
 namespace Singularity
 {
@@ -20,7 +19,7 @@ namespace Singularity
 
   public:
     /// The Transform attached to this Entity
-    Transform *transform;
+    Geometry::Transform *transform;
 
     /// Create a new Entity with a given name
     Entity(std::string const& name="");

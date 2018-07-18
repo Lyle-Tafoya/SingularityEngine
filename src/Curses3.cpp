@@ -83,7 +83,7 @@ namespace Singularity::Graphics
           if(!drawable->IsEnabled()) { continue; }
           for(size_t i = 0; i < drawable->vertices.size(); i += 3)
           {
-            Quaternion const &rotation = drawable->entity->transform->rotation;
+            Geometry::Quaternion const &rotation = drawable->entity->transform->rotation;
             Vector3 const &position = drawable->entity->transform->position;
             Vector3 const &v1 = rotation * drawable->vertices[i] + position;
             Vector3 const &v2 = rotation * drawable->vertices[i+1] + position;
