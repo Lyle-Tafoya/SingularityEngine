@@ -1,5 +1,5 @@
-#include <string>
 #include <ncurses.h>
+#include <string>
 #include <Singularity/Graphics/Curses.hpp>
 #include <Singularity/Components/CursesRenderer.hpp>
 
