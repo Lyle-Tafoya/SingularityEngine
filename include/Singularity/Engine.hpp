@@ -1,5 +1,5 @@
-#ifndef _SINGULARITY_ENGINE_HPP
-#define _SINGULARITY_ENGINE_HPP
+#ifndef SINGULARITY_ENGINE_HPP_
+#define SINGULARITY_ENGINE_HPP_
 
 #include <chrono>
 

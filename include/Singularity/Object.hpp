@@ -1,5 +1,5 @@
-#ifndef _SINGULARITY_OBJECT_HPP
-#define _SINGULARITY_OBJECT_HPP
+#ifndef SINGULARITY_OBJECT_HPP_
+#define SINGULARITY_OBJECT_HPP_
 
 #include <string>
 #include <unordered_set>

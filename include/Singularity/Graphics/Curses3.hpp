@@ -1,5 +1,5 @@
-#ifndef _SINGULARITY_CURSES3_HPP
-#define _SINGULARITY_CURSES3_HPP
+#ifndef SINGULARITY_CURSES3_HPP_
+#define SINGULARITY_CURSES3_HPP_
 
 #include <ncurses.h>
 #include <Singularity/Geometry/Transform.hpp>

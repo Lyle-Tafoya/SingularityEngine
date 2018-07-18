@@ -1,5 +1,5 @@
-#ifndef _SINGULARITY_CURSES_HPP
-#define _SINGULARITY_CURSES_HPP
+#ifndef SINGULARITY_CURSES_HPP_
+#define SINGULARITY_CURSES_HPP_
 
 #include <ncurses.h>
 

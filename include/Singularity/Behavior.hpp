@@ -1,5 +1,5 @@
-#ifndef _SINGULARITY_BEHAVIOR_HPP
-#define _SINGULARITY_BEHAVIOR_HPP
+#ifndef SINGULARITY_BEHAVIOR_HPP_
+#define SINGULARITY_BEHAVIOR_HPP_
 
 #include <unordered_map>
 #include <vector>

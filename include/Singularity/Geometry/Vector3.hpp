@@ -1,5 +1,5 @@
-#ifndef _SINGULARITY_VECTOR3_HPP
-#define _SINGULARITY_VECTOR3_HPP
+#ifndef SINGULARITY_VECTOR3_HPP_
+#define SINGULARITY_VECTOR3_HPP_
 
 #include <cmath>
 #include <Singularity/Geometry/Vector2.hpp>

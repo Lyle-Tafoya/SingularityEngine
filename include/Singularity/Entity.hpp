@@ -1,5 +1,5 @@
-#ifndef _SINGULARITY_ENTITY_HPP
-#define _SINGULARITY_ENTITY_HPP
+#ifndef SINGULARITY_ENTITY_HPP_
+#define SINGULARITY_ENTITY_HPP_
 
 #include <string>
 #include <vector>

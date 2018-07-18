@@ -1,5 +1,5 @@
-#ifndef _SINGULARITY_CURSES3_RENDERER
-#define _SINGULARITY_CURSES3_RENDERER
+#ifndef SINGULARITY_CURSES3_RENDERER_
+#define SINGULARITY_CURSES3_RENDERER_
 
 #include <string>
 #include <unordered_map>

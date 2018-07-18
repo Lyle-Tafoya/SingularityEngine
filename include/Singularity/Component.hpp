@@ -1,5 +1,5 @@
-#ifndef _SINGULARITY_COMPONENT_HPP
-#define _SINGULARITY_COMPONENT_HPP
+#ifndef SINGULARITY_COMPONENT_HPP_
+#define SINGULARITY_COMPONENT_HPP_
 
 #include <Singularity/Entity.hpp>
 #include <Singularity/Object.hpp>

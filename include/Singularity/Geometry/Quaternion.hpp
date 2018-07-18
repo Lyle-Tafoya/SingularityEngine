@@ -1,5 +1,5 @@
-#ifndef _SINGULARITY_QUATERNION_HPP
-#define _SINGULARITY_QUATERNION_HPP
+#ifndef SINGULARITY_QUATERNION_HPP_
+#define SINGULARITY_QUATERNION_HPP_
 
 #include <Singularity/Geometry/Vector3.hpp>
 
