@@ -7,20 +7,27 @@ set(CMAKE_CXX_FLAGS "-Wall -Wextra")
 set(CMAKE_CXX_FLAGS_DEBUG "-g")
 set(CMAKE_CXX_FLAGS_RELEASE "-O3")
 
-project(singularity)
-add_library(singularity SHARED
-  src/Behavior.cpp
-  src/Component.cpp
-  src/Curses3.cpp
-  src/Curses.cpp
-  src/Engine.cpp
-  src/Entity.cpp
-  src/Object.cpp
-  src/Quaternion.cpp
-  src/Transform.cpp
-  src/Vector2.cpp
-  src/Vector3.cpp
-  src/Vector4.cpp
+project(SingularityBase)
+add_library(SingularityBase SHARED
+  src/Base/Behavior.cpp
+  src/Base/Component.cpp
+  src/Base/Engine.cpp
+  src/Base/Entity.cpp
+  src/Base/Object.cpp
+  src/Base/Quaternion.cpp
+  src/Base/Transform.cpp
+  src/Base/Vector2.cpp
+  src/Base/Vector3.cpp
+  src/Base/Vector4.cpp
 )
-set_target_properties(singularity PROPERTIES DEBUG_POSTFIX "d")
-set_target_properties(singularity PROPERTIES PUBLIC_HEADER include/)
+set_target_properties(SingularityBase PROPERTIES DEBUG_POSTFIX "d")
+set_target_properties(SingularityBase PROPERTIES PUBLIC_HEADER include/)
+
+project(SingularityCurses)
+add_library(SingularityCurses SHARED
+  src/Curses/Curses3.cpp
+  src/Curses/Curses.cpp
+)
+set_target_properties(SingularityCurses PROPERTIES LINK_FLAGS "-lncurses")
+set_target_properties(SingularityCurses PROPERTIES DEBUG_POSTFIX "d")
+set_target_properties(SingularityCurses PROPERTIES PUBLIC_HEADER include/)
