@@ -30,7 +30,7 @@ namespace Singularity
     void AddComponent(Component *component);
 
     /// Return a Component attached to this entity of type ComponentType
-    template<class ComponentType> ComponentType * GetComponent()
+    template<class ComponentType> ComponentType * GetComponent() const
     {
       for(auto kv : components)
       {
@@ -44,7 +44,7 @@ namespace Singularity
     }
 
     /// Return a std::vector of Components attached to this entity of type ComponentType
-    template<class ComponentType> std::vector<ComponentType *> GetComponents()
+    template<class ComponentType> std::vector<ComponentType *> GetComponents() const
     {
       std::vector<ComponentType *> results;
       for(auto kv : components)

@@ -36,7 +36,7 @@ namespace Singularity
     void Enable();
 
     /// Determine whether this Behavior is enabled
-    inline bool IsEnabled() { return enabled; }
+    inline bool IsEnabled() const { return enabled; }
 
     /// Update all enabled Behavior objects
     static void UpdateAll();
