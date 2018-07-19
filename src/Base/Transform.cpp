@@ -1,4 +1,5 @@
 #include <Singularity/Geometry/Transform.hpp>
+#include <Singularity/Geometry/Quaternion.hpp>
 
 namespace Singularity::Geometry
 {
