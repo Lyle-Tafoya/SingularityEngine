@@ -24,7 +24,7 @@ namespace Singularity
     /// Create a new Entity with a given name
     Entity(std::string const& name="");
 
-    ~Entity();
+    ~Entity() override;
 
     /// Add a Component to this Entity
     void AddComponent(Component *component);

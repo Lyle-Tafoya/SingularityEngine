@@ -11,7 +11,7 @@ namespace Singularity
   class Component : public Object
   {
   public:
-    virtual ~Component();
+    virtual ~Component() override;
 
     /// The Entity this component is attached to.
     Entity *entity;

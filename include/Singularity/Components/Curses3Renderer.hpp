@@ -12,18 +12,18 @@ namespace Singularity
   {
     static std::unordered_map<size_t, Curses3Renderer *> drawables;
 
-    void OnDisable()
+    void OnDisable() override
     {
       Curses3Renderer::drawables.erase(GetInstanceId());
     }
-    void OnEnable()
+    void OnEnable() override
     {
       Curses3Renderer::drawables[GetInstanceId()] = this;
     }
 
   public:
     Curses3Renderer() { OnEnable(); }
-    ~Curses3Renderer() { OnDisable(); }
+    ~Curses3Renderer() override { OnDisable(); }
 
     std::vector<Geometry::Vector3> vertices;
 

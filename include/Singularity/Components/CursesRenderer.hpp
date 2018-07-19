@@ -11,11 +11,11 @@ namespace Singularity
   {
     static std::unordered_map<size_t, CursesRenderer *> drawables;
 
-    void OnDisable()
+    void OnDisable() override
     {
       CursesRenderer::drawables.erase(GetInstanceId());
     }
-    void OnEnable()
+    void OnEnable() override
     {
       CursesRenderer::drawables[GetInstanceId()] = this;
     }
@@ -24,7 +24,7 @@ namespace Singularity
     /// Generate a CursesRenderer Component
     CursesRenderer() { OnEnable(); }
 
-    ~CursesRenderer() { OnDisable(); }
+    ~CursesRenderer() override { OnDisable(); }
 
     /// The text to render to the screen
     std::string text;

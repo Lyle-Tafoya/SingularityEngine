@@ -27,7 +27,7 @@ namespace Singularity
   public:
     Behavior();
 
-    ~Behavior();
+    ~Behavior() override;
 
     /// Disable this Behavior
     void Disable();
