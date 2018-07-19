@@ -5,6 +5,7 @@ namespace Singularity
   Entity::Entity(std::string const& name) : transform(new Geometry::Transform)
   {
     this->name = name;
+    AddComponent(transform);
   }
 
   Entity::~Entity()
@@ -15,7 +16,7 @@ namespace Singularity
       component->entity = nullptr;
       Object::Destroy(component);
     }
-    delete transform;
+    Object::Destroy(transform);
   }
 
   void Entity::AddComponent(Component *component)
