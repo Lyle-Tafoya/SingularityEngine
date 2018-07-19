@@ -1,13 +1,14 @@
 #ifndef SINGULARITY_TRANSFORM_HPP_
 #define SINGULARITY_TRANSFORM_HPP_
 
+#include <Singularity/Component.hpp>
 #include <Singularity/Geometry/Quaternion.hpp>
 #include <Singularity/Geometry/Vector3.hpp>
 
 namespace Singularity::Geometry
 {
   /// Used to store and manipulate position, rotation, and scale of an Entity.
-  class Transform
+  class Transform : public Component
   {
   public:
     /// The parent of this Transform

@@ -3,6 +3,7 @@
 #include <ncurses.h>
 #include <Singularity/Components/Curses3Renderer.hpp>
 #include <Singularity/Engine.hpp>
+#include <Singularity/Entity.hpp>
 #include <Singularity/Geometry/Vector3.hpp>
 #include <Singularity/Graphics/Curses3.hpp>
 

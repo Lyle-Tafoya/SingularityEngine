@@ -2,6 +2,7 @@
 #include <string>
 #include <Singularity/Graphics/Curses.hpp>
 #include <Singularity/Components/CursesRenderer.hpp>
+#include <Singularity/Entity.hpp>
 
 namespace Singularity::Graphics
 {

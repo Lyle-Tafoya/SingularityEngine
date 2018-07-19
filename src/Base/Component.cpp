@@ -1,4 +1,5 @@
 #include <Singularity/Component.hpp>
+#include <Singularity/Entity.hpp>
 
 namespace Singularity
 {
