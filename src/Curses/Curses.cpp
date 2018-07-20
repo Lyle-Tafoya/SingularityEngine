@@ -1,8 +1,9 @@
 #include <ncurses.h>
 #include <string>
-#include <Singularity/Graphics/Curses.hpp>
 #include <Singularity/Components/CursesRenderer.hpp>
 #include <Singularity/Entity.hpp>
+#include <Singularity/Geometry/Transform.hpp>
+#include <Singularity/Graphics/Curses.hpp>
 
 namespace Singularity::Graphics
 {

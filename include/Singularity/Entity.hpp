@@ -6,10 +6,10 @@
 #include <unordered_map>
 #include <Singularity/Component.hpp>
 #include <Singularity/Object.hpp>
-#include <Singularity/Geometry/Transform.hpp>
 
 namespace Singularity
 {
+  namespace Geometry { class Transform; }
   class Component;
 
   /// An object of this type does nothing on it's own, but can have behavior added via Component objects
