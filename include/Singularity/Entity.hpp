@@ -4,7 +4,6 @@
 #include <string>
 #include <vector>
 #include <unordered_map>
-#include <Singularity/Component.hpp>
 #include <Singularity/Object.hpp>
 
 namespace Singularity
