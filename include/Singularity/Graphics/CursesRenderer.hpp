@@ -3,28 +3,19 @@
 
 #include <string>
 #include <unordered_map>
-#include <Singularity/Behavior.hpp>
+#include <Singularity/Component.hpp>
 
 namespace Singularity
 {
-  class CursesRenderer : public Behavior
+  class CursesRenderer : public Component
   {
     static std::unordered_map<size_t, CursesRenderer *> drawables;
 
-    void OnDisable() override
-    {
-      CursesRenderer::drawables.erase(GetInstanceId());
-    }
-    void OnEnable() override
-    {
-      CursesRenderer::drawables[GetInstanceId()] = this;
-    }
-
   public:
     /// Generate a CursesRenderer Component
-    CursesRenderer() { OnEnable(); }
+    CursesRenderer() { CursesRenderer::drawables[GetInstanceId()] = this; }
 
-    ~CursesRenderer() override { OnDisable(); }
+    ~CursesRenderer() override { CursesRenderer::drawables.erase(GetInstanceId()); }
 
     /// The text to render to the screen
     std::string text;

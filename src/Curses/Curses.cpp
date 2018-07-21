@@ -36,7 +36,6 @@ namespace Singularity::Graphics
     for(auto kv : CursesRenderer::GetDrawables())
     {
       CursesRenderer *drawable = kv.second;
-      if(!drawable->IsEnabled()) { continue; }
       Geometry::Vector3 position = drawable->entity->transform->position;
       attron(COLOR_PAIR(drawable->color));
       mvwaddstr(window, position.y, position.x, drawable->text.c_str());
@@ -48,7 +47,6 @@ namespace Singularity::Graphics
     for(auto kv : CursesRenderer::GetDrawables())
     {
       CursesRenderer *drawable = kv.second;
-      if(!drawable->IsEnabled()) { continue; }
       Geometry::Vector3 position = drawable->entity->transform->position;
       std::string emptyStr(drawable->text.size(), ' ');
       mvwaddstr(window, position.y, position.x, emptyStr.c_str());
