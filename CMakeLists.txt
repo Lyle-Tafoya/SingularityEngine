@@ -13,6 +13,7 @@ add_library(SingularityBase SHARED
   src/Base/Component.cpp
   src/Base/Engine.cpp
   src/Base/Entity.cpp
+  src/Base/MeshRenderer.cpp
   src/Base/Object.cpp
   src/Base/Quaternion.cpp
   src/Base/Transform.cpp
@@ -20,6 +21,7 @@ add_library(SingularityBase SHARED
   src/Base/Vector3.cpp
   src/Base/Vector4.cpp
 )
+set_target_properties(SingularityBase PROPERTIES LINK_FLAGS "-lassimp -lstdc++fs")
 set_target_properties(SingularityBase PROPERTIES DEBUG_POSTFIX "d")
 set_target_properties(SingularityBase PROPERTIES PUBLIC_HEADER include/)
 

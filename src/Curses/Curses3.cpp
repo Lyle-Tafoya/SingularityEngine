@@ -1,11 +1,12 @@
 #include <cmath>
 #include <limits>
 #include <ncurses.h>
+#include <assimp/scene.h>
 #include <Singularity/Engine.hpp>
 #include <Singularity/Entity.hpp>
 #include <Singularity/Geometry/Vector3.hpp>
 #include <Singularity/Graphics/Curses3.hpp>
-#include <Singularity/Graphics/Curses3Renderer.hpp>
+#include <Singularity/Graphics/MeshRenderer.hpp>
 
 namespace Singularity::Graphics
 {
@@ -74,7 +75,7 @@ namespace Singularity::Graphics
   {
     frameTiming[frame++ % 60] = Engine::GetDeltaTime();
     getmaxyx(window, height, width);
-    auto drawables = Curses3Renderer::GetDrawables();
+    auto drawables = MeshRenderer::GetDrawables();
     float pixelWidth = viewport.scale.x / width;
     float pixelHeight = viewport.scale.y / height;
     Geometry::Vector3 firstPixelCenter(viewport.position.x-viewport.scale.x/2+pixelWidth/2, viewport.position.y-viewport.scale.y/2+pixelHeight/2, viewport.position.z);
@@ -86,19 +87,27 @@ namespace Singularity::Graphics
         Geometry::Vector3 ray = (camera.position - currentPixel).Normalized();
         for(auto kv : drawables)
         {
-          Curses3Renderer *drawable = kv.second;
-          if(!drawable->IsEnabled()) { continue; }
-          for(size_t i = 0; i < drawable->vertices.size(); i += 3)
+          MeshRenderer *drawable = kv.second;
+          for(auto *mesh : drawable->meshes)
           {
-            Geometry::Quaternion const &rotation = drawable->entity->transform->rotation;
-            Geometry::Vector3 const &position = drawable->entity->transform->position;
-            Geometry::Vector3 const &v1 = rotation * drawable->vertices[i] + position;
-            Geometry::Vector3 const &v2 = rotation * drawable->vertices[i+1] + position;
-            Geometry::Vector3 const &v3 = rotation * drawable->vertices[i+2] + position;
-            float distance, u, v;
-            if(RayTriangleIntersect(camera.position, ray, v1, v2, v3, distance, u, v))
+            for(std::vector<unsigned int> *face : mesh->faceIndices)
             {
-              mvwaddch(window, yPixel, xPixel, '#' | COLOR_PAIR(1));
+              for(size_t indexNum = 0; indexNum < face->size(); indexNum += 3)
+              {
+                unsigned int i1 = face->at(indexNum);
+                unsigned int i2 = face->at(indexNum + 1);
+                unsigned int i3 = face->at(indexNum + 2);
+                Geometry::Quaternion const &rotation = drawable->entity->transform->rotation;
+                Geometry::Vector3 const &position = drawable->entity->transform->position;
+                Geometry::Vector3 v1 = rotation * *mesh->vertices[i1] + position;
+                Geometry::Vector3 v2 = rotation * *mesh->vertices[i2] + position;
+                Geometry::Vector3 v3 = rotation * *mesh->vertices[i3] + position;
+                float distance, u, v;
+                if(RayTriangleIntersect(camera.position, ray, v1, v2, v3, distance, u, v))
+                {
+                  mvwaddch(window, yPixel, xPixel, '#' | COLOR_PAIR(1));
+                }
+              }
             }
           }
         }
