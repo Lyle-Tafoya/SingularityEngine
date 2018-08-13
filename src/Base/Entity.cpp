@@ -3,10 +3,10 @@
 
 namespace Singularity
 {
-  Entity::Entity(std::string const& name) : transform(new Geometry::Transform)
+  Entity::Entity(std::string const& name)
   {
     this->name = name;
-    AddComponent(transform);
+    transform = &AddComponent<Geometry::Transform>();
   }
 
   Entity::~Entity()
@@ -18,11 +18,5 @@ namespace Singularity
       Object::Destroy(component);
     }
     Object::Destroy(transform);
-  }
-
-  void Entity::AddComponent(Component *component)
-  {
-    component->entity = this;
-    components[component->GetInstanceId()] = component;
   }
 }

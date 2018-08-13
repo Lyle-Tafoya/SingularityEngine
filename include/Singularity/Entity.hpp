@@ -4,6 +4,7 @@
 #include <string>
 #include <vector>
 #include <unordered_map>
+#include <Singularity/Component.hpp>
 #include <Singularity/Object.hpp>
 
 namespace Singularity
@@ -26,7 +27,13 @@ namespace Singularity
     ~Entity() override;
 
     /// Add a Component to this Entity
-    void AddComponent(Component *component);
+    template<class ComponentType> ComponentType &AddComponent()
+    {
+      ComponentType *component = new ComponentType();
+      component->entity = this;
+      components[component->GetInstanceId()] = component;
+      return *component;
+    }
 
     /// Return a Component attached to this entity of type ComponentType
     template<class ComponentType> ComponentType * GetComponent() const
