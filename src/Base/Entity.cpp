@@ -3,9 +3,8 @@
 
 namespace Singularity
 {
-  Entity::Entity(std::string const& name)
+  Entity::Entity(std::string const& name) : Object(name)
   {
-    this->name = name;
     transform = &AddComponent<Geometry::Transform>();
   }
 

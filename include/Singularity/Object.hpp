@@ -15,7 +15,7 @@ namespace Singularity
 
   public:
     /// Generate an Object with a given name
-    Object(std::string const& name="");
+    Object(std::string const &name="");
 
     virtual ~Object() = default;
 
